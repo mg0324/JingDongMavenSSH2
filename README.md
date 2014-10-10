@@ -1,5 +1,6 @@
 JingDongMavenSSH2
 =================
+各个依赖包都在maven的pom.xml中管理的。
 
 京东云上使用maven搭建的ssh2的环境
 
