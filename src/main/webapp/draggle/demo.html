@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>mgangbox的draggle插件</title>
+    <link href="css/drog.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+</head>
+<body>
+    <div class="mgbox-drog gray_border" style="width:400px;height: 20px;background: pink;">
+        mgangbox draggle title
+        <div style="border-top:none;" class="gray_border">
+            xxxx
+        </div>
+    </div>
+
+    <div id="evt_msg" style="margin-top:200px;z-index: 1;">
+
+    </div>
+
+    <script type="text/javascript">
+        $(function(){
+            var allowMove = false;
+            var beforeX = 0;
+            var beforeY = 0;
+            $(".mgbox-drog").bind("mousedown",function(evt){
+                allowMove = true;
+                beforeX =evt.pageX - this.offsetLeft;
+                beforeY =evt.pageY - this.offsetTop;
+;            }).bind("mousemove",function(evt){
+                if(allowMove){
+                    var moveX = evt.pageX - beforeX;
+                    var moveY = evt.pageY - beforeY;
+                    $(this).css({
+                        left : moveX,
+                        top : moveY
+                    });
+                    $("#evt_msg").text("x:"+this.offsetLeft + " -- y:" +this.offsetTop);
+                }
+            }).bind("mouseup mouseout",function(evt){
+                allowMove = false;
+            });
+        });
+
+    </script>
+</body>
+</html>
